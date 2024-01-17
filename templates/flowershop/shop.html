@@ -1,0 +1,46 @@
+{%extends 'flowershop/base.html'%}
+{%block content%}
+<div class="py-3 draggable" draggable="true">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 d-flex align-items-center">
+                <a href="{% url 'shop'%}" class="btn btn-sm  text-primary shadow-none  btn-round mb-0  ">
+                    ВСІ
+                </a>
+                {%for cat in categories%}
+                <a href="{%url 'category' name=cat.name%}" class="btn btn-sm  text-primary shadow-none  btn-round mb-0  ">
+                    {{cat.name}}
+                </a>
+                 {%endfor%}
+            </div>
+        </div>
+    </div>
+</div>
+ <section class="py-1">
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                    {%for item in items%}
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Product image-->
+                            <img class="card-img-top" src="{{item.picture.url}}" alt="..." />
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder"><a href="{%url 'item' id=item.title%}">{{item.title}}</a></h5>
+                                    <!-- Product price-->
+                                    ₴{{item.price}}
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'order_product' item.id %}">Замовити</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    {%endfor%}
+                </div>
+            </div>
+        </section>
+{%endblock%}

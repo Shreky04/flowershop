@@ -1,0 +1,72 @@
+{%extends 'flowershop/base.html'%}
+{%block content%}
+<section class="py-5">
+    <div class="container">
+        <div class="row removable">
+            <div class="col-md-4 col-xl-3 drop-zone">
+                <div class="card mb-3 draggable" draggable="true">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Profile Details</h5>
+                    </div>
+                    <div class="card-body text-center">
+                        <h5 class="card-title mb-2">{{ user_profile.user.username }}</h5>
+                        <div class="text-muted mb-2 "> Номер телефону:</div>
+                        <div class="text-muted mb-3 ">{{ user_profile.phone }}</div>
+                        <div class="text-muted mb-2 "> Дата народження:</div>
+                        <div class="text-muted mb-3 "> {{ user_profile.dateofbirth }}</div>
+                    </div>
+                    <hr class="my-0">
+                </div>
+             </div>
+            <div class="col-md-8 col-xl-9 drop-zone">
+   <div class="row my-5">
+         <div class="col-md-6 mx-auto text-center">
+             <h2>Мої замовлення</h2>
+
+         </div>
+   </div>
+        <div class="row">
+            <div class="col-md-10 mx-auto">
+                <div class="accordion" id="accordionRental">
+                    {% for order in user_orders %}
+                    <div class="accordion-item mb-3">
+                        <h5 class="accordion-header" id="headingOne">
+                            <button class="accordion-button border-bottom font-weight-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Замовлення № {{order.id}}
+                                <i class="collapse-close fa fa-plus text-xs pt-1 position-absolute end-0 me-3" aria-hidden="true"></i>
+                                <i class="collapse-open fa fa-minus text-xs pt-1 position-absolute end-0 me-3" aria-hidden="true"></i>
+                            </button>
+                        </h5>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionRental">
+                            <div class="accordion-body text-sm opacity-8">
+                                <div class="card draggable" draggable="true">
+                                        <div class="card-body">
+                                             <h5 class="mt-1 mb-3">{{order.item.title}}</h5>
+                                            <div class="row">
+                                                <div class="col mt-0">
+                                                    <h5 class="card-title">Адреса доставки: {{order.street}}, {{order.house}}, {{order.apartment}}</h5>
+                                                </div>
+
+                                                <div class="col-auto">
+
+                                                </div>
+                                            </div>
+                                            <h5 class="mt-1 mb-3">Сума замовлення: {{order.price}}</h5>
+                                            <div class="mb-0">
+
+                                                <span class="text-muted">{{order.order_datetime}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    {%endfor%}
+                </div>
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+</section>
+{%endblock%}

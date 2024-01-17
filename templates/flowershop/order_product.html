@@ -1,0 +1,42 @@
+{% extends 'flowershop/base.html' %}
+{% block content %}
+<div class="row removable">
+    <div class="col-lg-4 drop-zone"></div>
+    <div class="col-lg-4 drop-zone">
+        <section class="draggable" draggable="true">
+        <div class="container">
+            <div class="row">
+                    <div class="card card-plain">
+                        <div class="card-body">
+                            <h3 class="text-gradient mb-0 text-primary mb-3 mt-3" >{{ item.title }}</h3>
+                            <div class="fs-5 mb-4">
+                            <span>₴{{item.price}}</span>
+                            </div>
+                            <form role="form" method="post" action="{% url 'order_product' item.id %}">
+                                {% csrf_token %}
+                                <div class="mb-3">
+                                    <input type="text" name="street" class="form-control form-control-lg" placeholder="Вулиця" aria-label="street" aria-describedby="street">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="text" name="house" class="form-control form-control-lg" placeholder="дім" aria-label="house" aria-describedby="house">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="text" name="apartment" class="form-control form-control-lg" placeholder="квартира" aria-label="apartment" aria-describedby="apartment">
+                                </div>
+                                <div class="mb-3">
+                                    {{ form.quantity }}
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-2 mb-0">Замовити</button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+</section>
+    </div>
+    <div class="col-lg-4 drop-zone"></div>
+</div>
+{% endblock %}

@@ -1,0 +1,64 @@
+{%extends 'flowershop/base.html'%}
+{%block content%}
+    <header class="mt-4">
+        <div class="page-header min-vh-75">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 my-auto">
+                        <h1 class="text-gradient mb-0 text-primary">Your Desired</h1>
+                        <h1 class="mb-4">Experiences</h1>
+                        <p class="lead">The time is now for it to be okay to be great. For being a bright color. For standing out.</p>
+                        <div class="buttons">
+                            <button type="button" class="btn mt-4 bg-gradient-primary">Каталог</button>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-8 ps-5 pe-0">
+                        <div class="row">
+                            <div class="col-lg-3 col-6">
+                                <img class="w-100 border-radius-lg shadow mt-0 mt-lg-7" src="https://i.pinimg.com/564x/4c/19/2e/4c192e2567de5bc9806f212aa75aaf75.jpg" alt="">
+                            </div>
+                            <div class="col-lg-3 col-6">
+                                <img class="w-100 border-radius-lg shadow" src="https://i.pinimg.com/564x/02/38/f2/0238f2bfce61f07c39056b9c64678bb8.jpg" alt="">
+                                <img class="w-100 border-radius-lg shadow mt-4" src="https://i.pinimg.com/564x/0b/29/8d/0b298d1bc9216e25b35de550b9bd6bc9.jpg" alt="">
+                            </div>
+                            <div class="col-lg-3 col-6">
+                                <img class="w-100 border-radius-lg shadow mt-0 mt-lg-5" src="https://i.pinimg.com/564x/f4/f3/4a/f4f34a714affe7260fa81df7890c0251.jpg" alt="">
+                                <img class="w-100 border-radius-lg shadow mt-4" src="https://i.pinimg.com/564x/6c/f7/e9/6cf7e9255c33f2594724cfd4c350bfd8.jpg" alt="">
+                            </div>
+                            <div class="col-lg-3 col-6">
+                                <img class="w-100 border-radius-lg shadow mt-3" src="https://i.pinimg.com/564x/6d/84/93/6d8493e479b45ccf5a494a393eb796a1.jpg" alt="">
+                                <img class="w-100 border-radius-lg shadow mt-4" src="https://i.pinimg.com/564x/20/cf/4f/20cf4f23459bfefcec740afc148d7b42.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+<section class="py-5">
+                <div class="container px-5">
+                    <a class="badge bg-primary bg-gradient rounded-pill mb-4" href="{% url 'blog'%}">News</a>
+                    <div class="card border-0 shadow rounded-3 overflow-hidden">
+                        <div class="card-body p-0">
+                            <div class="row gx-0">
+                                <div class="col-lg-6 col-xl-5 py-lg-5">
+                                    <div class="p-4 p-md-5">
+
+                                        <div class="h2 fw-bolder">{{latest_post.title}}</div>
+                                        <p>{{latest_post.content}}</p>
+                                        <a class="stretched-link text-decoration-none" href="#!">
+                                            Read more
+                                            <i class="bi bi-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-xl-7"><img class="bg-featured-blog p-6" src="{{latest_post.image.url}}"/></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+{%endblock%}
